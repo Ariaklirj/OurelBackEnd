@@ -27,12 +27,12 @@ module.exports = {
       type:"string",
       required:true,
       notNull:true
-    }
-    password:{
+    },
+    coins:{
       type:"float",
       required:true,
       notNull:true
-    }
+    },
 
     //Assosiation
     album:{

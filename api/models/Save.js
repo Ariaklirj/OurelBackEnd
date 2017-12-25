@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id:{
+    id_save:{
       type:'string',
       unique:true,
       primaryKey: true,
@@ -17,21 +17,21 @@ module.exports = {
         return sails.uuidv4();
       }
     },
-     ammount:{
-       type:'float',
-       defaultsTo:0
-     },
      //foreing Key
-     user:{
-       model:'Users',
+     chapter:{
+       model:'Chapters',
+       required:true,
+       notNull:true
+     },
+     status:{
+       model:'Status',
        required:true,
        notNull:true
      },
      //Assosiation
-     save:{
-       collection: 'Saves',
+     character:{
+       collection: 'Character',
        via:'save'
      }
-
   }
 };
