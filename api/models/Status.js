@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id_sticker:{
+    id_estatus:{
       type:'string',
       unique:true,
       primaryKey: true,
@@ -17,8 +17,8 @@ module.exports = {
         return sails.uuidv4();
       }
     },
-    used:{
-        type:"boolean"
+    description:{
+        type:"String"
     },
 
      //foreing Key
@@ -27,6 +27,16 @@ module.exports = {
        required:true,
        notNull:true
      },
+     admin:{
+      model:'Admin',
+      required:true,
+      notNull:true
+    },
+    chapter:{
+     model:'Chapters',
+     required:true,
+     notNull:true
+   }
 
 
   }

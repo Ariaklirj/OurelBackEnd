@@ -29,6 +29,16 @@ module.exports = {
        required:true,
        notNull:true
      },
+     admin:{
+      model:'Admin',
+      required:true,
+      notNull:true
+    },
+    chapter:{
+     model:'Chapters',
+     required:true,
+     notNull:true
+   }
 
 
   }

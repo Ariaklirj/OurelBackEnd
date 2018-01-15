@@ -28,6 +28,14 @@ module.exports = {
     save:{
       collection: 'Save',
       via:'chapter'
+    },
+    status:{
+      collection: 'Status',
+      via:'chapter'
+    },
+    decisions:{
+      collection: 'Decisions',
+      via:'chapter'
     }
   }
 };
