@@ -1,5 +1,5 @@
 /**
- * Balance.js
+ * Users.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -9,30 +9,34 @@ module.exports = {
 
   attributes: {
 
-    id_stick:{
+    id_Admin:{
       type:'string',
-      unique:true,
       primaryKey: true,
+      unique:true,
       defaultsTo:function(){
         return sails.uuidv4();
-      }
-    },
-    used:{
-        type:"boolean"
-    },
+      },
 
-     //foreing Key
-     user:{
-       model:'Users',
-       required:true,
-       notNull:true
-     },
-     sticker:{
-      model:'Sticker',
+    },
+    name:{
+      type:'string',
       required:true,
       notNull:true
+    },
+    password:{
+      type:"string",
+      required:true,
+      notNull:true
+    },
+
+    //Assosiation
+    status:{
+      collection: 'Status',
+      via:'admin'
+    },
+    decisions:{
+      collection: 'Decisions',
+      via:'admin'
     }
-
-
   }
 };

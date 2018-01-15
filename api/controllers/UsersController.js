@@ -9,66 +9,30 @@ module.exports = {
 	create: function(req,res){
 
 			var param = req.allParams();
-			if(param.name!=null){
-				if(param.email!=null){
-					if(param.celphone!=null){
-						if(param.capital){
-							var object = {name: param.name,
-								 email: param.email ,
-								 celphone: param.celphone}
-								Users.create(object).exec(function(err,value){
-									if(err){
-										res.negotiate("no usuario");
-									}
-									else {
-										async.map(param.capital,function(cap,next){
-													var objBalance={user:value.id}
-											Balance.create(objBalance).exec(function(err,val){
-														if(err){
-															next(err);
-														}
-														else {
-															var capObj= {capital:cap.capital,
-															typeCapital:cap.type,
-															balance: val.id}
-															console.log(capObj);
-															Capital.create(capObj).exec(function(err,valCap){
-																if(err){
-																	next(err);
-																}
-																else{
-																	next();
-																}
-															});
-														}
-													});
-										},function(err,value){
-											if(err)
-											{
-												console.log(err);
-												res.negotiate(err);
-											}
-											else {
-												res.ok();
-											}
-										});
-									}
-								});
+			if(param.nick!=null){
+				if(param.pass!=null){
+					console.log("parametros ok")
+					var obj={
+						name:param.nick,
+						password:param.pass,
+						coins:20
+					};
+					console.log(obj);
+					Users.create(obj).exec(function(err,value){
+						if(err){
+							console.log(err)
+							res.negotiate(err);
+						} else {
+							res.ok("User created");
 						}
-						else {
-							res.badRequest("falto capitales");
-						}
-					}
-					else {
-						res.badRequest("falto numero");
-					}
+					})
 				}
 				else {
-					res.badRequest("falto email");
+					res.badRequest("no password");
 				}
 			}
 			else {
-				res.badRequest("falto nombre");
+				res.badRequest("no nickname");
 			}
 	}
 

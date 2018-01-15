@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id_sticker:{
+    id_decision:{
       type:'string',
       unique:true,
       primaryKey: true,
@@ -17,13 +17,15 @@ module.exports = {
         return sails.uuidv4();
       }
     },
-    used:{
-        type:"boolean"
+    description:{
+        type:"String"
     },
-
+    id_next_stauts:{
+        type:"String"
+    },
      //foreing Key
-     user:{
-       model:'Users',
+     status:{
+       model:'Status',
        required:true,
        notNull:true
      },

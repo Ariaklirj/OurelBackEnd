@@ -38,10 +38,6 @@ module.exports.routes = {
 'GET /users/:id/balance': {
 controller:"Balance",action:"find"
 },
-
-'POST /users/:id/expense': {
-controller:"Expenses",action:"create"
-},
 'POST /users': {
 controller:"Users",action:"create"
 },
