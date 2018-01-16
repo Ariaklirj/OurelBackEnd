@@ -41,6 +41,9 @@ controller:"Balance",action:"find"
 'POST /users': {
 controller:"Users",action:"create"
 },
+'POST /chapter': {
+  controller:"Chapter",action:"create"
+  },
 'POST /users/:id/deposit': {
 controller:"Deposits",action:"create"
 }

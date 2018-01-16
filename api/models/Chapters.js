@@ -13,12 +13,12 @@ module.exports = {
       type:'string',
       unique:true,
       primaryKey: true,
-      defaultsTo:function(){
-        return sails.uuidv4();
-      }
     },
     description:{
         type:"string"
+    },
+    chapter_name:{
+      type:"String"
     },
       //Assosiation
     sticker:{
