@@ -44,6 +44,15 @@ controller:"Users",action:"create"
 'POST /chapter': {
   controller:"Chapter",action:"create"
   },
+'POST /admin': {
+    controller:"Admin",action:"create"
+ },
+ 'GET /admin': {
+  controller:"Admin",action:"find"
+},
+ 'POST /status': {
+  controller:"Status",action:"create"
+  },  
 'POST /users/:id/deposit': {
 controller:"Deposits",action:"create"
 }

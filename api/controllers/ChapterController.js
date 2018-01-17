@@ -15,6 +15,7 @@ module.exports = {
                 if(param.desc!=null){
                     console.log("parametros ok")
                     var obj={
+                        id_chapter:param.id,
                         description:param.desc,
                         chapter_name:param.name,
                     };
@@ -24,7 +25,7 @@ module.exports = {
                             console.log(err)
                             res.negotiate(err);
                         } else {
-                            res.ok("User created");
+                            res.ok("Chapter created");
                         }
                     })
                 }

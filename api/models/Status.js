@@ -14,16 +14,32 @@ module.exports = {
       unique:true,
       primaryKey: true,    
     },
+    title:{
+      required:true,
+      type:"String"
+     },
     description:{
+        required:true,
         type:"String"
+    },
+    uniqueStart:{
+      type:"boolean",
+      required:true
+    },
+    isStart:{
+      type:"boolean",
+      required:true,
+    },
+    isEnd:{
+      type:"boolean",
+      required:true,
+    },
+    lastStatus:{
+      type:"String"
     },
 
      //foreing Key
-     user:{
-       model:'Users',
-       required:true,
-       notNull:true
-     },
+     
      admin:{
       model:'Admin',
       required:true,

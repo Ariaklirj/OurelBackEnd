@@ -18,6 +18,7 @@ module.exports = {
       }
     },
     description:{
+        required:true,
         type:"String"
     },
     id_next_stauts:{
