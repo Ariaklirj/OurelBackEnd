@@ -29,8 +29,8 @@ module.exports = {
                                         isStart:param.isStart,
                                         isEnd:param.isEnd,
                                         lastStatus:null,
-                                        admin:adm,
-                                        chapter:chap
+                                        admin:adm.id_Admin,
+                                        chapter:chap.id_chapter
                                     };
                                     Status.create(obj).exec(function(err,value){
                                         if(err){
