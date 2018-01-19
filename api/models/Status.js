@@ -12,7 +12,10 @@ module.exports = {
     id_estatus:{
       type:'string',
       unique:true,
-      primaryKey: true,    
+      primaryKey: true,  
+      defaultsTo:function(){
+        return sails.uuidv4();
+      }  
     },
     title:{
       required:true,

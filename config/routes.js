@@ -52,7 +52,19 @@ controller:"Users",action:"create"
 },
  'POST /status': {
   controller:"Status",action:"create"
-  },  
+  },
+  'GET /status': {
+    controller:"Status",action:"find"
+    },    
+'POST /decision': {
+  controller:"Decision",action:"create"
+  },
+'GET /decision': {
+  controller:"Decision",action:"find"
+   },
+'Put /decision': {
+  controller:"Decision",action:"update"
+  },       
 'POST /users/:id/deposit': {
 controller:"Deposits",action:"create"
 }

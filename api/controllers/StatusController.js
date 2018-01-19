@@ -10,7 +10,7 @@ module.exports = {
 
         var param = req.allParams();
             if(param.uniqueStart) {
-                if(param.id==null||param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null) {
+                if(param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null) {
                     res.badRequest("los paramatres estan incompletos");
                 } else {
                     Admin.find({id_Admin:param.admin}).exec(function(err,adm){
@@ -22,15 +22,14 @@ module.exports = {
                                     res.negotiate("error inesperado");
                                 } else {
                                     var obj={
-                                        id_estatus:param.id,
                                         title:param.title,
                                         description:param.description,
                                         uniqueStart:param.uniqueStart,
                                         isStart:param.isStart,
                                         isEnd:param.isEnd,
                                         lastStatus:null,
-                                        admin:adm.id_Admin,
-                                        chapter:chap.id_chapter
+                                        admin:adm[0].id_Admin,
+                                        chapter:chap[0].id_chapter
                                     };
                                     Status.create(obj).exec(function(err,value){
                                         if(err){
@@ -48,7 +47,7 @@ module.exports = {
             
             }            
         else {
-            if(param.id==null||param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null||param.lastStatus==null) {
+            if(param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null||param.lastStatus==null) {
                 res.badRequest("los paramatres estan incompletos");
             } else {
                 Admin.find({id_Admin:param.admin}).exec(function(err,adm){
@@ -59,18 +58,16 @@ module.exports = {
                             if(err){
                                 res.negotiate("error inesperado");
                             } else {
-                                console.log(adm);
-                                console.log(chap);
+                                
                                 var obj={
-                                    id_estatus:param.id,
                                     title:param.title,
                                     description:param.description,
                                     uniqueStart:param.uniqueStart,
                                     isStart:param.isStart,
                                     isEnd:param.isEnd,
                                     lastStatus:param.lastStatus,
-                                    admin:adm,
-                                    chapter:chap
+                                    admin:adm[0].id_Admin,
+                                    chapter:chap[0].id_chapter
                                 };
                                 Status.create(obj).exec(function(err,value){
                                     if(err){
@@ -103,6 +100,7 @@ find:function(req,res) {
         })
 
     } else {
+        res.badRequest("Los paramtros estan incompletos");
 
     }
 }
