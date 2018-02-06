@@ -20,6 +20,10 @@ module.exports = {
     chapter_name:{
       type:"String"
     },
+    chapter_status:{
+      type:"boolean",
+      notNull:true
+    },
       //Assosiation
     sticker:{
       collection: 'Sticker',

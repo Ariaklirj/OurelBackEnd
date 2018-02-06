@@ -7,41 +7,69 @@
 
 module.exports = {
 
-    create: function(req,res){
-
+    create: function (req, res) {
+        console.log("crear");
+        var param = req.validate([{ "id": "string" }, { "name": "string" }, { "desc": "string" },{"status":"string"}]);
+        console.log("parametros ok");
+        var obj = {
+            id_chapter: param.id,
+            description: param.desc,
+            chapter_name: param.name,
+            chapter_status:param.status
+        };
+        console.log(obj);
+        Chapters.create(obj).exec(function (err, value) {
+            if (err) {
+                console.log(err)
+                res.negotiate(err);
+            } else {
+                res.ok("Chapter created");
+            }
+        });
+    },
+    find:function(req,res){
+        console.log("obtener");
         var param = req.allParams();
+
         if(param.id!=null){
-            if(param.name!=null){
-                if(param.desc!=null){
-                    console.log("parametros ok")
-                    var obj={
-                        id_chapter:param.id,
-                        description:param.desc,
-                        chapter_name:param.name,
-                    };
-                    console.log(obj);
-                    Chapters.create(obj).exec(function(err,value){
-                        if(err){
-                            console.log(err)
-                            res.negotiate(err);
-                        } else {
-                            res.ok("Chapter created");
-                        }
-                    })
+            var criteria={
+                id_chapter:param.id
+            }
+            Chapters.findOne(criteria).exec(function(err,value){
+                if(!err){
+                    res.ok(value);
                 }
                 else {
-                    res.badRequest("no description");
+                    res.negotiate(err);
                 }
-            }
-            else {
-                res.badRequest("no chapter_name");
-            }
+            });
+        }
+        else {
+            Chapters.find().exec(function(err,values){
+                if(!err){
+                    res.ok(values);
+                }
+                else {
+                    res.negotiate(err);
+                }
+            });
+        }
+        
+    },
+    update:function(req,res){
+        console.log("actualizar");
+        var params = req.validate([{'status':'boolean'},{'id':'string'}]);
+        if(params){
+            Chapters.update({id_chapter:params.id},{chapter_status:params.status},function(err,updateData){
+                if(!err) {
+                    res.ok(updateData);
+                }
+                else {
+                    res.negotiate(err);
+                }
+            });
+        }
     }
-    else{
-        res.badRequest("no id");
-    }
-
-    }
-	
+    
 };
 

@@ -33,7 +33,7 @@ module.exports.connections = {
     host: 'localhost',
     user: 'Ariak', //optional
     password: '123mnbMNB', //optional
-    database: 'OurelDB' //optional
+    database: 'ourelDB' //optional
   },
 
   /***************************************************************************

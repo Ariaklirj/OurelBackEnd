@@ -33,41 +33,47 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-  controller:"Ping",action:"index"
-},
-'GET /users/:id/balance': {
-controller:"Balance",action:"find"
-},
-'POST /users': {
-controller:"Users",action:"create"
-},
-'POST /chapter': {
-  controller:"Chapter",action:"create"
+    controller: "Ping", action: "index"
   },
-'POST /admin': {
-    controller:"Admin",action:"create"
- },
- 'GET /admin': {
-  controller:"Admin",action:"find"
-},
- 'POST /status': {
-  controller:"Status",action:"create"
+  'GET /users/:id/balance': {
+    controller: "Balance", action: "find"
+  },
+  'POST /users': {
+    controller: "Users", action: "create"
+  },
+  'POST /chapter': {
+    controller: "Chapter", action: "create"
+  },
+  'GET /chapter': {
+    controller: "Chapter", action: "find"
+  },
+  'PUT /chapter': {
+    controller: "Chapter", action: "update"
+  },
+  'POST /admin': {
+    controller: "Admin", action: "create"
+  },
+  'GET /admin': {
+    controller: "Admin", action: "find"
+  },
+  'POST /status': {
+    controller: "Status", action: "create"
   },
   'GET /status': {
-    controller:"Status",action:"find"
-    },    
-'POST /decision': {
-  controller:"Decision",action:"create"
+    controller: "Status", action: "find"
   },
-'GET /decision': {
-  controller:"Decision",action:"find"
-   },
-'Put /decision': {
-  controller:"Decision",action:"update"
-  },       
-'POST /users/:id/deposit': {
-controller:"Deposits",action:"create"
-}
+  'POST /decision': {
+    controller: "Decision", action: "create"
+  },
+  'GET /decision': {
+    controller: "Decision", action: "find"
+  },
+  'Put /decision': {
+    controller: "Decision", action: "update"
+  },
+  'POST /users/:id/deposit': {
+    controller: "Deposits", action: "create"
+  }
 
   /***************************************************************************
   *                                                                          *
