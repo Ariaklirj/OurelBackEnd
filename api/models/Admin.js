@@ -15,8 +15,12 @@ module.exports = {
       unique:true,
       defaultsTo:function(){
         return sails.uuidv4();
-      },
+      }
 
+    },
+    lvlAdmin:{
+      type:'integer',
+      defaultsTo:'1'
     },
     name:{
       type:'string',
@@ -36,6 +40,10 @@ module.exports = {
     },
     decisions:{
       collection: 'Decisions',
+      via:'admin'
+    },
+    chapters:{
+      collection: 'Chapters',
       via:'admin'
     }
   }

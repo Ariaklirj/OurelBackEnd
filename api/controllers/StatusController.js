@@ -6,103 +6,81 @@
  */
 
 module.exports = {
-	create: function(req,res){
+    create: function (req, res) {
 
-        var param = req.allParams();
-            if(param.uniqueStart) {
-                if(param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null) {
-                    res.badRequest("los paramatres estan incompletos");
+        var param = req.validate([{'title':'string'},{'uniqueStart':'boolean'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'}]);
+      
+        if(param) {
+            Admin.findOne({id_Admin:param.admin}).exec(function(err,admin){
+                if(err) {
+                    res.negotiate(err);
                 } else {
-                    Admin.find({id_Admin:param.admin}).exec(function(err,adm){
-                        if(err){
-                            res.negotiate("error inesperado");
-                        } else {
-                            Chapters.find({id_chapter:param.chapter}).exec(function(err,chap){
-                                if(err){
-                                    res.negotiate("error inesperado");
-                                } else {
-                                    var obj={
-                                        title:param.title,
-                                        description:param.description,
-                                        uniqueStart:param.uniqueStart,
-                                        isStart:param.isStart,
-                                        isEnd:param.isEnd,
-                                        lastStatus:null,
-                                        admin:adm[0].id_Admin,
-                                        chapter:chap[0].id_chapter
-                                    };
-                                    Status.create(obj).exec(function(err,value){
-                                        if(err){
-                                            console.log(err)
-                                            res.negotiate(err);
-                                        } else {
-                                            res.ok("Status created");
-                                        }
-                                    });
-                                }
-                            })
-                        }
-                    });
-                }
-            
-            }            
-        else {
-            if(param.title==null||param.description==null||param.chapter==null||param.admin==null||param.isEnd==null||param.lastStatus==null) {
-                res.badRequest("los paramatres estan incompletos");
-            } else {
-                Admin.find({id_Admin:param.admin}).exec(function(err,adm){
-                    if(err){
-                        res.negotiate("error inesperado");
-                    } else {
-                        Chapters.find({id_chapter:param.chapter}).exec(function(err,chap){
-                            if(err){
-                                res.negotiate("error inesperado");
+                    if(admin) {
+                        Chapters.findOne({id_chapter:param.chapter}).exec(function(err,chapter){
+                            if(err) {
+                                res.negotiate(err);
                             } else {
-                                
-                                var obj={
+                                var newEstatus = {
                                     title:param.title,
-                                    description:param.description,
                                     uniqueStart:param.uniqueStart,
                                     isStart:param.isStart,
                                     isEnd:param.isEnd,
                                     lastStatus:param.lastStatus,
-                                    admin:adm[0].id_Admin,
-                                    chapter:chap[0].id_chapter
+                                    admin:admin.id_Admin,
+                                    chapter:chapter.id_chapter
                                 };
-                                Status.create(obj).exec(function(err,value){
-                                    if(err){
-                                        console.log(err)
+                                Status.create(newEstatus).exec(function(err,status){
+                                    if(err) {
                                         res.negotiate(err);
                                     } else {
-                                        res.ok("Status created");
+                                        res.ok("estatus creado");
                                     }
-                                });
+                                })
                             }
-                        })
+                        });
+                    } else {
+                        res.forbidden();
                     }
-                });
-            }
+                }
+            })
+        } 
         
+
+
+    },
+    find: function (req, res) {
+        var param = req.allParams();
+
+        if (param.chapter != null) {
+            Status.find({ chapter: param.chapter }).populate('chapter').exec(function (err, statu) {
+                if (err) {
+                    res.negotiate("errot inesperado");
+                } else {
+                    res.ok(statu);
+                }
+            });
+
+        } else {
+            Status.find().populate('chapter').exec(function (err, statu) {
+                if (err) {
+                    res.negotiate("errot inesperado");
+                } else {
+                    res.ok(statu);
+                }
+            });
         }
-            
-        
-},
-find:function(req,res) {
-    var param = req.allParams();
-
-    if(param.id!=null) {
-        Status.find({id_estatus:param.id}).populate('chapter').exec(function(err,statu){
-            if(err) {
-                res.negotiate("errot inesperado");
-            } else {
-                res.ok(statu);
-            }
-        })
-
-    } else {
-        res.badRequest("Los paramtros estan incompletos");
-
+    },
+    update:function(req,res){
+        var params = req.validate([{"description":"string"},{"id_estatus":"string"}]);
+        if(params) {
+            Status.update({id_estatus:params.id_estatus},{description:params.description}).exec(function(err,statusUpdate){
+                if(err) {
+                    res.negotiate(err);
+                } else {
+                    res.ok("Estatus actualisado");
+                }
+            });
+        }
     }
-}
 };
 

@@ -22,7 +22,6 @@ module.exports = {
       type:"String"
      },
     description:{
-        required:true,
         type:"String"
     },
     uniqueStart:{

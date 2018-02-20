@@ -10,26 +10,26 @@ module.exports = {
         var param = req.allParams();
         if (param.description!=null&&param.status!=null&&param.admin!=null&&param.chapter!=null) {
 
-            Status.find({id_estatus:param.status}).exec(function(err,stat){
+            Status.findOne({id_estatus:param.status}).exec(function(err,stat){
 
                 if(err) {
                     res.negotiate(err);
                 }
                 else {
-                    Admin.find({id_Admin:param.admin}).exec(function(err,adm) {
+                    Admin.findOne({id_Admin:param.admin}).exec(function(err,adm) {
                         if(err) {
                             res.negotiate(err);
                         } else {
-                            Chapters.find({id_chapter:param.chapter}).exec(function(err,chap){
+                            Chapters.findOne({id_chapter:param.chapter}).exec(function(err,chap){
                                 if(err) {
                                     res.negotiate(err);
                                 } else {
                                     var obj = {
                                         description:param.description,
                                         id_next_stauts:param.nextStatus,
-                                        status:stat[0].id_estatus,
-                                        admin:adm[0].id_Admin,
-                                        chapter:chap[0].id_chapter
+                                        status:stat.id_estatus,
+                                        admin:adm.id_Admin,
+                                        chapter:chap.id_chapter
                                     };
                                     Decisions.create(obj).exec(function(err,object){
                                         if(err){

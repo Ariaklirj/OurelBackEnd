@@ -11,8 +11,11 @@ module.exports = {
 
     id_chapter:{
       type:'string',
-      unique:true,
       primaryKey: true,
+      unique:true,
+      defaultsTo:function(){
+        return sails.uuidv4();
+      }
     },
     description:{
         type:"string"
@@ -22,6 +25,12 @@ module.exports = {
     },
     chapter_status:{
       type:"boolean",
+      notNull:true
+    },
+    //foreing key
+    admin:{
+      model:'Admin',
+      required:true,
       notNull:true
     },
       //Assosiation

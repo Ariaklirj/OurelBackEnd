@@ -35,6 +35,9 @@ module.exports.routes = {
   '/': {
     controller: "Ping", action: "index"
   },
+  'POST /login': {
+    controller: "Login", action: "login"
+  },
   'GET /users/:id/balance': {
     controller: "Balance", action: "find"
   },
@@ -61,6 +64,9 @@ module.exports.routes = {
   },
   'GET /status': {
     controller: "Status", action: "find"
+  },
+  'PUT /status': {
+    controller: "Status", action: "update"
   },
   'POST /decision': {
     controller: "Decision", action: "create"

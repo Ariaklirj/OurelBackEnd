@@ -9,13 +9,13 @@ module.exports = {
 
     create: function (req, res) {
         console.log("crear");
-        var param = req.validate([{ "id": "string" }, { "name": "string" }, { "desc": "string" },{"status":"string"}]);
+        var param = req.validate([ { "name": "string" }, { "desc": "string" },{"status":"string"},{"admin":"string"}]);
         console.log("parametros ok");
-        var obj = {
-            id_chapter: param.id,
+        var obj = {         
             description: param.desc,
             chapter_name: param.name,
-            chapter_status:param.status
+            chapter_status:param.status,
+            admin:param.admin
         };
         console.log(obj);
         Chapters.create(obj).exec(function (err, value) {
