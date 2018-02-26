@@ -9,37 +9,68 @@ module.exports = {
 
   attributes: {
 
-    id_decision:{
-      type:'string',
-      unique:true,
+    id_decision: {
+      type: 'string',
+      unique: true,
       primaryKey: true,
-      defaultsTo:function(){
+      defaultsTo: function () {
         return sails.uuidv4();
       }
     },
-    description:{
-        required:true,
-        type:"String"
+
+    limitTime: {
+      required: true,
+      type: "boolean"
     },
-    id_next_stauts:{
-        type:"String"
+    singleDecision: {
+      required: true,
+      type: "boolean"
     },
-     //foreing Key
-     status:{
-       model:'Status',
-       required:true,
-       notNull:true
-     },
-     admin:{
-      model:'Admin',
-      required:true,
-      notNull:true
+
+    descriptionOne: {
+      required: true,
+      required: true,
+      type: "String"
     },
-    chapter:{
-     model:'Chapters',
-     required:true,
-     notNull:true
-   }
+    idNextStatusOne: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    descriptionTwo: {
+      required: true,
+      type: "String"
+    },
+    idNextStatusTwo: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    descriptionThree: {
+     
+      type: "String",
+      defaultsTo:null
+    },
+    idNextStatusThree: {
+      type: "String",
+      defaultsTo:null
+    },
+    //foreing Key
+    status: {
+      model: 'Status',
+      required: true,
+      notNull: true
+    },
+    admin: {
+      model: 'Admin',
+      required: true,
+      notNull: true
+    },
+    chapter: {
+      model: 'Chapters',
+      required: true,
+      notNull: true
+    }
 
 
   }

@@ -9,23 +9,21 @@ module.exports = {
 
     create: function (req, res) {
         console.log("crear");
-        var param = req.validate([ { "name": "string" }, { "desc": "string" },{"status":"string"},{"admin":"string"}]);
-        console.log("parametros ok");
-        var obj = {         
-            description: param.desc,
-            chapter_name: param.name,
-            chapter_status:param.status,
-            admin:param.admin
-        };
-        console.log(obj);
-        Chapters.create(obj).exec(function (err, value) {
+        var param = req.validate([ { "chapter_name": "string" }, { "description": "string" },{"chapter_status":"boolean"},{"admin":"string"},{"previous_chapter":"string"},{"unique_start":"boolean"}]);
+        console.log("parametros ok",param);
+
+        if(param){
+              
+        Chapters.create(param).exec(function (err, value) {
             if (err) {
                 console.log(err)
                 res.negotiate(err);
             } else {
-                res.ok("Chapter created");
+                res.ok(value);
             }
         });
+        }
+      
     },
     find:function(req,res){
         console.log("obtener");
@@ -47,7 +45,10 @@ module.exports = {
         else {
             Chapters.find().exec(function(err,values){
                 if(!err){
-                    res.ok(values);
+                    if(values.length>0)
+                        res.ok(values);
+                    else 
+                        res.notFound("sin capitulos")
                 }
                 else {
                     res.negotiate(err);
@@ -62,6 +63,22 @@ module.exports = {
         if(params){
             Chapters.update({id_chapter:params.id},{chapter_status:params.status},function(err,updateData){
                 if(!err) {
+                    res.ok(updateData);
+                }
+                else {
+                    res.negotiate(err);
+                }
+            });
+        }
+    } ,
+    updateSequence:function(req,res) {
+        console.log("actualizar sequencia");
+        var params = req.validate(['id_chapter','sequenceUpdate']);
+        if(params){
+            console.log(params);
+            Chapters.update(params.id_chapter,params.sequenceUpdate,function(err,updateData){
+                if(!err) {
+                    console.log(updateData)
                     res.ok(updateData);
                 }
                 else {

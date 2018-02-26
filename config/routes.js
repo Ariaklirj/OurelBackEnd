@@ -53,6 +53,9 @@ module.exports.routes = {
   'PUT /chapter': {
     controller: "Chapter", action: "update"
   },
+  'PUT /chapter/sequenceUpdate': {
+    controller: "Chapter", action: "updateSequence"
+  },
   'POST /admin': {
     controller: "Admin", action: "create"
   },
@@ -76,6 +79,9 @@ module.exports.routes = {
   },
   'Put /decision': {
     controller: "Decision", action: "update"
+  },
+  'Put /decision/all': {
+    controller: "Decision", action: "updateAll"
   },
   'POST /users/:id/deposit': {
     controller: "Deposits", action: "create"

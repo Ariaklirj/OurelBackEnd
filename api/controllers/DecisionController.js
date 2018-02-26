@@ -7,78 +7,65 @@
 
 module.exports = {
 	create: function(req,res) {
-        var param = req.allParams();
-        if (param.description!=null&&param.status!=null&&param.admin!=null&&param.chapter!=null) {
 
-            Status.findOne({id_estatus:param.status}).exec(function(err,stat){
+        var params = req.validate([{'limitTime':'boolean'},{'singleDecision':'boolean'},{'descriptionOne':'string'}
+        ,{'descriptionTwo':'string'},{'descriptionThree?':'string'},{'status':'string'},{'admin':'string'},
+        {'chapter':'string'}]);
 
+        if(params) {
+            Decisions.create(params).exec(function(err,status){
                 if(err) {
                     res.negotiate(err);
-                }
+                } 
                 else {
-                    Admin.findOne({id_Admin:param.admin}).exec(function(err,adm) {
-                        if(err) {
-                            res.negotiate(err);
-                        } else {
-                            Chapters.findOne({id_chapter:param.chapter}).exec(function(err,chap){
-                                if(err) {
-                                    res.negotiate(err);
-                                } else {
-                                    var obj = {
-                                        description:param.description,
-                                        id_next_stauts:param.nextStatus,
-                                        status:stat.id_estatus,
-                                        admin:adm.id_Admin,
-                                        chapter:chap.id_chapter
-                                    };
-                                    Decisions.create(obj).exec(function(err,object){
-                                        if(err){
-                                            res.negotiate(err);
-                                        } else {
-                                            res.ok("decision creada");
-                                        }
-                                    });
-                                }
-                            });
-                        }
-
-                    });
+                    res.ok(status);
                 }
-
-            });
-
+            })
         }
+        
     },
     find:function(req,res){
-        var param = req.allParams();
-        if (param.status!=null){
-
-            Decisions.find({status:param.status}).exec(function(err,value){
-                if (err) {
+        var params = req.validate({'status':'string'});
+        console.log(params);
+        if(params) {
+            Decisions.find({status:params.status}).exec(function(err,data){
+                if(err) {
                     res.negotiate(err);
                 } else {
-                    res.ok(value);
+                    if(data.length>0) {
+                        res.ok(data);
+                    } else {
+                        res.notFound("Sin decisiones");
+                    }
                 }
-            });
-
-        } else {
-            res.badRequest("falta parametro de busqueda");
+            })
         }
     },
     update:function(req,res) {
-        var param = req.allParams();
-
-        if(param.id!=null&&param.nextStatus!=null) {
-            Decisions.update({id_decision:param.id},{id_next_stauts:param.nextStatus},function(err,dataUpdated){
-                if(err) {
-                    res.negotiate(err);
-                } else {
-                    res.ok(dataUpdated);
-                }
+      var params = req.validate(["id_decision","updateDecision"])
+      if(params) {
+         
+        Decisions.update(params.id_decision,params.updateDecision).exec(function(err,data){
+            if(err) {
+                res.negotiate(err)
+            } else {
+                res.ok(data);
+            }
+          });
+      }
+    },
+    updateAll:function(req,res) {
+        var params = req.validate(["id_decision","updateDecision"])
+        if(params) {
+           
+          Decisions.update(params.id_decision,params.updateDecision).exec(function(err,data){
+              if(err) {
+                  res.negotiate(err)
+              } else {
+                  res.ok(data);
+              }
             });
-        } else {
-            res.badRequest("Datos incompletos");
         }
-    }
+      }
 };
 

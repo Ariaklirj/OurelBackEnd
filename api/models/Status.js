@@ -24,10 +24,6 @@ module.exports = {
     description:{
         type:"String"
     },
-    uniqueStart:{
-      type:"boolean",
-      required:true
-    },
     isStart:{
       type:"boolean",
       required:true,
@@ -38,6 +34,11 @@ module.exports = {
     },
     lastStatus:{
       type:"String"
+    },
+    decisionsAtached:{
+     
+      type:"boolean",
+      defaultsTo:false
     },
 
      //foreing Key

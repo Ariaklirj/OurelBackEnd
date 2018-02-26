@@ -9,46 +9,58 @@ module.exports = {
 
   attributes: {
 
-    id_chapter:{
-      type:'string',
+    id_chapter: {
+      type: 'string',
       primaryKey: true,
-      unique:true,
-      defaultsTo:function(){
+      unique: true,
+      defaultsTo: function () {
         return sails.uuidv4();
       }
     },
-    description:{
-        type:"string"
+    description: {
+      type: "string"
     },
-    chapter_name:{
-      type:"String"
+    chapter_name: {
+      type: "String"
     },
-    chapter_status:{
+    chapter_status: {
+      type: "boolean",
+      notNull: true
+    },
+    previous_chapter: {
+      type: "string",
+     defaultsTo:null,
+    },
+    next_chapter: {
+      type: "string",
+      defaultsTo: null
+    },
+    unique_start:{
       type:"boolean",
-      notNull:true
+      required:true
     },
     //foreing key
-    admin:{
-      model:'Admin',
-      required:true,
-      notNull:true
+    admin: {
+      model: 'Admin',
+      required: true,
+      notNull: true
     },
-      //Assosiation
-    sticker:{
+    //Assosiation
+    sticker: {
       collection: 'Sticker',
-      via:'chapter'
+      via: 'chapter'
     },
-    save:{
+    save: {
       collection: 'Save',
-      via:'chapter'
+      via: 'chapter'
     },
-    status:{
+    status: {
       collection: 'Status',
-      via:'chapter'
+      via: 'chapter'
     },
-    decisions:{
+    decisions: {
       collection: 'Decisions',
-      via:'chapter'
+      via: 'chapter'
     }
   }
 };

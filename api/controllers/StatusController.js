@@ -8,7 +8,7 @@
 module.exports = {
     create: function (req, res) {
 
-        var param = req.validate([{'title':'string'},{'uniqueStart':'boolean'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'}]);
+        var param = req.validate([{'title':'string'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'}]);
       
         if(param) {
             Admin.findOne({id_Admin:param.admin}).exec(function(err,admin){
@@ -33,7 +33,7 @@ module.exports = {
                                     if(err) {
                                         res.negotiate(err);
                                     } else {
-                                        res.ok("estatus creado");
+                                        res.ok(status);
                                     }
                                 })
                             }
@@ -56,7 +56,12 @@ module.exports = {
                 if (err) {
                     res.negotiate("errot inesperado");
                 } else {
-                    res.ok(statu);
+                    if(statu.length<=0){
+                        res.notFound();
+                    } else {
+                        res.ok(statu);
+                    }
+                   
                 }
             });
 
@@ -71,9 +76,9 @@ module.exports = {
         }
     },
     update:function(req,res){
-        var params = req.validate([{"description":"string"},{"id_estatus":"string"}]);
+        var params = req.validate([{"description":"string"},{"id_estatus":"string"},{"decisionsAtached":"boolean"}]);
         if(params) {
-            Status.update({id_estatus:params.id_estatus},{description:params.description}).exec(function(err,statusUpdate){
+            Status.update({id_estatus:params.id_estatus},{description:params.description,decisionsAtached:params.decisionsAtached}).exec(function(err,statusUpdate){
                 if(err) {
                     res.negotiate(err);
                 } else {
