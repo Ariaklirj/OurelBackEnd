@@ -35,6 +35,9 @@ module.exports = {
     lastStatus:{
       type:"String"
     },
+    lastStatus2:{
+      type:"String"
+    },
     decisionsAtached:{
      
       type:"boolean",

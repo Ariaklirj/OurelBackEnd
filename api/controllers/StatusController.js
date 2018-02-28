@@ -8,7 +8,7 @@
 module.exports = {
     create: function (req, res) {
 
-        var param = req.validate([{'title':'string'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'}]);
+        var param = req.validate([{'title':'string'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'},{'lastStatus2?':'string'}]);
       
         if(param) {
             Admin.findOne({id_Admin:param.admin}).exec(function(err,admin){
@@ -26,6 +26,7 @@ module.exports = {
                                     isStart:param.isStart,
                                     isEnd:param.isEnd,
                                     lastStatus:param.lastStatus,
+                                    lastStatus2:param.lastStatus2,
                                     admin:admin.id_Admin,
                                     chapter:chapter.id_chapter
                                 };
