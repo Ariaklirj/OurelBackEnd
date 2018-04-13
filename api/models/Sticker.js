@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id:{
+    id_stick:{
       type:'string',
       primaryKey: true,
       unique:true,
@@ -23,9 +23,19 @@ module.exports = {
       required:true,
       notNull:true
     },
+    urlImage:{
+      type:'string',
+      required:true,
+      notNull:true
+    },
     //foreing Key
     chapter:{
       model:'Chapters',
+      required:true,
+      notNull:true
+    },
+    status:{
+      model:'Status',
       required:true,
       notNull:true
     },

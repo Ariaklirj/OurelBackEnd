@@ -53,8 +53,12 @@ module.exports = {
     chapter:{
      model:'Chapters',
      required:true
-   }
-
+   },
+   //Association
+   sticker: {
+    collection: 'Sticker',
+    via: 'status'
+  },
 
   }
 };

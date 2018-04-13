@@ -7,33 +7,17 @@
 
 module.exports = {
 	create: function(req,res){
+		var params = req.validate([{'name':'string'},{'password':'string'},{'coins':'numeric'}]);
+		if(params) {
+			Users.create(params).exec(function(err,user){
+				if(!err) {
+					res.negotiate(err);
+				} else {
+					res.ok("usuario creado");
+				}
+			})
+		}
 
-			var param = req.allParams();
-			if(param.nick!=null){
-				if(param.pass!=null){
-					console.log("parametros ok")
-					var obj={
-						name:param.nick,
-						password:param.pass,
-						coins:20
-					};
-					console.log(obj);
-					Users.create(obj).exec(function(err,value){
-						if(err){
-							console.log(err)
-							res.negotiate(err);
-						} else {
-							res.ok("User created");
-						}
-					});
-				}
-				else {
-					res.badRequest("no password");
-				}
-			}
-			else {
-				res.badRequest("no nickname");
-			}
 	}
 
 };

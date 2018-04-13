@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id_stick:{
+    id_Realstick:{
       type:'string',
       unique:true,
       primaryKey: true,

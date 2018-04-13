@@ -28,6 +28,11 @@ module.exports = {
        required:true,
        notNull:true
      },
+     user:{
+      model:'Users',
+      required:true,
+      notNull:true
+    },
      //Assosiation
      character:{
        collection: 'Character',

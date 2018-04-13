@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    id:{
+    id_user:{
       type:'string',
       primaryKey: true,
       unique:true,
@@ -29,7 +29,7 @@ module.exports = {
       notNull:true
     },
     coins:{
-      type:"float",
+      type:"integer",
       required:true,
       notNull:true
     },
@@ -37,6 +37,10 @@ module.exports = {
     //Assosiation
     album:{
       collection: 'Album',
+      via:'user'
+    },
+    save:{
+      collection:'Save',
       via:'user'
     },
     character:{
