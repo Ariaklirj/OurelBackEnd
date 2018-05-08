@@ -44,6 +44,9 @@ module.exports.routes = {
   'POST /users': {
     controller: "Users", action: "create"
   },
+  'GET /users': {
+    controller: "Users", action: "find"
+  },
   'POST /chapter': {
     controller: "Chapter", action: "create"
   },

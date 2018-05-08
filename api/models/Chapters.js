@@ -17,6 +17,12 @@ module.exports = {
         return sails.uuidv4();
       }
     },
+    chapterNumber: {
+      type: "number",
+      autoIncrement: true,
+      notNull: true
+    
+    },
     description: {
       type: "string"
     },

@@ -32,7 +32,7 @@ module.exports = {
     find: function (req, res) {
         var param = req.allParams();
         if (param.name != null) {
-            Admin.find({ name: param.name }).exec(function (err, adm) {
+            Admin.findOne({ name: param.name , password:param.password }).exec(function (err, adm) {
                 if (err) {
                     res.negotiate("error inesperado");
                 } else {

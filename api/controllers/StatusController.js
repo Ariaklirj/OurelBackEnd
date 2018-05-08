@@ -88,5 +88,6 @@ module.exports = {
             });
         }
     }
+    //TODO get first status by chapter
 };
 
