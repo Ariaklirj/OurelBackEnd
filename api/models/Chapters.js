@@ -67,6 +67,14 @@ module.exports = {
     decisions: {
       collection: 'Decisions',
       via: 'chapter'
+    },
+    ChapterProgress: {
+      collection: 'ChapterProgress',
+      via: 'chapter'
+    },
+    UserChaptersOwned: {
+      collection: 'UserChaptersOwned',
+      via: 'chapter'
     }
   }
 };

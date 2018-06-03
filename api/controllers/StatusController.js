@@ -76,6 +76,21 @@ module.exports = {
             });
         }
     },
+    findFirsts:function(req,res){
+        var param = req.allParams();
+        if (param.chapter!= null) {
+            Status.find({chapter:param.chapter , isStart:true}).exec(function(err,status){
+                if(err){
+                    res.negotiate(err);
+                } else {
+                    if (status.length<=0)
+                        res.notFound();
+                    else 
+                        res.ok(status);
+                }
+            });
+        }
+    },
     update:function(req,res){
         var params = req.validate([{"description":"string"},{"id_estatus":"string"},{"decisionsAtached":"boolean"}]);
         if(params) {

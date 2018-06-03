@@ -73,6 +73,12 @@ module.exports = {
         }
 
     },
+    getChapterOne:function(req,res){
+        var param = req.allParams();
+        Chapters.findOne().exec(function(err,chapter){
+
+        })
+    },
     update: function (req, res) {
         console.log("actualizar");
         var params = req.validate([{ 'status': 'boolean' }, { 'id': 'string' }]);

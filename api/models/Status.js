@@ -59,6 +59,12 @@ module.exports = {
     collection: 'Sticker',
     via: 'status'
   },
-
+   
+  ChapterProgress: {
+    collection: 'ChapterProgress',
+    via: 'status'
+  }
+  
+ 
   }
 };

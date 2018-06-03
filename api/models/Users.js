@@ -46,6 +46,14 @@ module.exports = {
     character:{
       collection: 'Character',
       via:'user'
+    },
+    ChapterProgress:{
+      collection: 'ChapterProgress',
+      via:'user'
+    },
+    UserChaptersOwned:{
+      collection: 'UserChaptersOwned',
+      via:'user'
     }
   }
 };

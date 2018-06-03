@@ -35,8 +35,21 @@ module.exports = {
         }
 
 
+    },
+    update: function(req,res){
+        var params = req.validate([{'chapter':'string'},{'status':'string'}]);
+        if(params){
+            Save.update({chapter:params.chapter},{status:params.status}).exec(function(err,data){
+                if(!err) {
+                    res.ok(data);
+                }
+                else {
+                    res.negotiate(err);
+                }
+            })
+        }
     }
-    //TODO update save
+  
 
 };
 
