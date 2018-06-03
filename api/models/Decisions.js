@@ -28,7 +28,7 @@ module.exports = {
     },
 
     descriptionOne: {
-      required: true,
+     
       required: true,
       type: "String"
     },
@@ -38,7 +38,7 @@ module.exports = {
       defaultsTo:null
     },
     descriptionTwo: {
-      required: true,
+      defaultsTo:null,
       type: "String"
     },
     idNextStatusTwo: {
