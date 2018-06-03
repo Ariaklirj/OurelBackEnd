@@ -30,8 +30,8 @@ module.exports.connections = {
   ***************************************************************************/
   someMysqlServer: {
     adapter: 'sails-mysql',
-    //host: 'ariaklr.c7gkxu8etyao.us-east-2.rds.amazonaws.com',
-    host: 'localhost',
+    host: 'ariaklr.c7gkxu8etyao.us-east-2.rds.amazonaws.com',
+    //host: 'localhost',
     user: 'Ariak', //optional
     password: '123mnbMNB', //optional
     database: 'OurelDB' //optional

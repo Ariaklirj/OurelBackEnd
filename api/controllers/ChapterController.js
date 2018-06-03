@@ -75,8 +75,11 @@ module.exports = {
     },
     getChapterOne:function(req,res){
         var param = req.allParams();
-        Chapters.findOne().exec(function(err,chapter){
-
+        Chapters.findOne({ chapterNumber:1}).exec(function(err,chapter){
+                if (!err)
+                    res.ok(chapter);
+                else
+                    res.negotiate(err);
         })
     },
     update: function (req, res) {
