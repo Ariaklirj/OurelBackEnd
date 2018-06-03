@@ -8,7 +8,7 @@
 module.exports = {
 	create: function(req,res) {
 
-        var params = req.validate([{'limitTime':'boolean'},{'singleDecision':'boolean'},{'descriptionOne':'string'}
+        var params = req.validate([{'limitTime':'boolean'},{'singleDecision':'boolean'},{'uniqDecision':'boolean'},{'descriptionOne':'string'}
         ,{'descriptionTwo':'string'},{'descriptionThree?':'string'},{'status':'string'},{'admin':'string'},
         {'chapter':'string'}]);
 
