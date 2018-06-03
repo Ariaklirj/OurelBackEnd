@@ -26,7 +26,7 @@ module.exports = {
       required: true,
       type: "boolean"
     },
-    unicDecision: {
+    uniqDecision: {
       required: true,
       type: "boolean"
     },
