@@ -77,7 +77,7 @@ module.exports = {
         }
     },
     findFirsts:function(req,res){
-        var param = req.allParams();
+        var param = req.allParams({"chapter":"string"});
         if (param.chapter!= null) {
             Status.find({chapter:param.chapter , isStart:true}).exec(function(err,status){
                 if(err){
