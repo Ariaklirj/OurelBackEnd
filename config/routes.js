@@ -53,6 +53,9 @@ module.exports.routes = {
   'GET /chapter': {
     controller: "Chapter", action: "find"
   },
+  'GET /chapterOne': {
+    controller: "Chapter", action: "getChapterOne"
+  },
   'PUT /chapter': {
     controller: "Chapter", action: "update"
   },
@@ -88,6 +91,12 @@ module.exports.routes = {
   },
   'POST /users/:id/deposit': {
     controller: "Deposits", action: "create"
+  },
+  'POST /ChapterProges': {
+    controller: "ChapterProgressController", action: "create"
+  },
+  'GET /getAllChapterProges': {
+    controller: "ChapterProgressController", action: "findAllByChapter"
   }
 
   /***************************************************************************
