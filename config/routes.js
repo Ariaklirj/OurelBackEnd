@@ -97,7 +97,14 @@ module.exports.routes = {
   },
   'GET /getAllChapterProges': {
     controller: "ChapterProgressController", action: "findAllByChapter"
+  },
+  'POST /UsersChapter': {
+    controller: "UserChapterOwnedController", action: "create"
+  },
+  'GET /getAllChaptersUser': {
+    controller: "UserChapterOwnedController", action: "findAllByUser"
   }
+
 
   /***************************************************************************
   *                                                                          *
