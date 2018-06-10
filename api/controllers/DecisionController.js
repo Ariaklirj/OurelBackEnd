@@ -28,7 +28,7 @@ module.exports = {
         var params = req.validate({'status':'string'});
         console.log(params);
         if(params) {
-            Decisions.find({status:params.status}).exec(function(err,data){
+            Decisions.findOne({status:params.status}).exec(function(err,data){
                 if(err) {
                     res.negotiate(err);
                 } else {

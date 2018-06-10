@@ -24,14 +24,29 @@ module.exports = {
             user: params.user
         }
         ChapterProgress.find(criteria).exec(function (err, chapters) {
-            if (!err) {
-                if (chapters)
-                    res.ok(chapters);
-                else
-                    res.notFound();
+            if(!err){
+                Status.find({chapter:params.chapter}).exec(function(err2,data){
+                    if(!err2){
+                            var statusFromChapterUser = chapters.length;
+                            var totalStatusChapter = data.length;
+                            var progrees = (statusFromChapterUser*100)/totalStatusChapter;
+                            progrees = progrees.toFixed(2);
+                            var responseObj= {
+                                amountUserStatus: statusFromChapterUser,
+                                toalStatus=totalStatusChapter,
+                                totalProgress = progrees
+                            }
+                            res.ok(responseObj);
+                    }
+                    else {
+                        res.negotiate(err);
+                    }
+                });
             }
-            else
+            else {
                 res.negotiate(err);
+            }
+          
         });
     }
 
