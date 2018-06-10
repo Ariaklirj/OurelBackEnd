@@ -44,12 +44,8 @@ module.exports = {
      }
   },
   afterCreate: function (saveCreated, next) {
-    var characterToSave = {
-      name:saveCreated.characterName,
-      user:saveCreated.user,
-      save:saveCreated.id_save
-    }
-    Character.create(characterToSave).exec(function(err,data){
+    
+    Character.create({name:saveCreated.characterName},{user:saveCreated.user},{save:saveCreated.id_save}).exec(function(err,data){
       if(!err)
           next();
       else 
