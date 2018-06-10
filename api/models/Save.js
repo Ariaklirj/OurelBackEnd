@@ -45,16 +45,23 @@ module.exports = {
   },
   afterCreate: function (saveCreated, next) {
     console.log(saveCreated);
-    var characterName= saveCreated.characterName;
-    var userID=saveCreated.user;
-    var saveID = saveCreated.id_save;
-    Character.create({name:characterName},{user:userID},{save:saveID}).exec(function(err,data){
+    
+    var obj = {
+      name:saveCreated.characterName,
+      user:saveCreated.user,
+      save:saveCreated.id_save
+    }
+    console.log(obj);
+    Character.create(obj).exec(function(err,data){
       if(!err){
        
         next();
       }        
-      else 
-          next(err);
+      else {
+        console.log("error",err);
+        next(err);
+      }
+          
     });
   }
 };
