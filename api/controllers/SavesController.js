@@ -7,7 +7,7 @@
 
 module.exports = {
     create: function (req, res) {
-        var params = req.validate([{ 'chapter': 'string' }, { 'status': 'string' }, { 'user': 'string' }])
+        var params = req.validate([{ 'chapter': 'string' }, { 'status': 'string' }, { 'user': 'string' }, { 'characterName': 'string' }])
         if (params) {
             Save.create(params).exec(function (err, save) {
                 if (!err) {

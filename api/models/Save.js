@@ -17,6 +17,10 @@ module.exports = {
         return sails.uuidv4();
       }
     },
+    characterName: {
+      type: "string",
+      required:true
+    },
      //foreing Key
      chapter:{
        model:'Chapters',
@@ -38,5 +42,18 @@ module.exports = {
        collection: 'Character',
        via:'save'
      }
+  },
+  afterCreate: function (saveCreated, next) {
+    var characterToSave = {
+      name:saveCreated.characterName,
+      user:saveCreated.user,
+      save:saveCreated.id_save
+    }
+    Character.create(characterToSave).exec(function(err,data){
+      if(!err)
+          next();
+      else 
+          next(err);
+    });
   }
 };
