@@ -92,6 +92,15 @@ module.exports.routes = {
   'Put /decision/all': {
     controller: "Decision", action: "updateAll"
   },
+  'POST /saveFile': {
+    controller: "SavesController", action: "create"
+  },
+  'GET /saveByCharacter': {
+    controller: "SavesController", action: "find"
+  },
+  'Put /saveFile': {
+    controller: "SavesController", action: "update"
+  },
   'POST /users/:id/deposit': {
     controller: "Deposits", action: "create"
   },
