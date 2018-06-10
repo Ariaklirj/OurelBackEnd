@@ -8,8 +8,13 @@
 module.exports = {
     create: function (req, res) {
         var params = req.validate([{ 'chapter': 'string' }, { 'status': 'string' }, { 'user': 'string' }, { 'characterName': 'string' }])
-        console.log(params);
-        if (params) {
+        var obj = {
+            chapter: param.chapter,
+            status: param.status,
+            user:param.user,
+            characterName:param.characterName
+        };
+        if (obj) {
             Save.create(params).exec(function (err, save) {
                 if (!err) {
                     res.ok(save);
