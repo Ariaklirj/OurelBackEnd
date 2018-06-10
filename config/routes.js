@@ -74,6 +74,9 @@ module.exports.routes = {
   'GET /status': {
     controller: "Status", action: "find"
   },
+  'GET /gameStatus': {
+    controller: "Status", action: "findGameStatus"
+  },
   'GET /findFirstsStatus': {
     controller: "Status", action: "findFirsts"
   },

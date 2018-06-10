@@ -49,6 +49,20 @@ module.exports = {
 
 
     },
+    findGameStatus:function(req,res){
+        var param = req.validate({"id_estatus":"string"});
+        Status.findOne({id_estatus:param.id_estatus}).exec(function(err,data){
+            if (!err){
+                if(data)
+                    res.ok(data);
+            }
+            else {
+                res.negotiate(err);
+            }
+               
+
+        })
+    },
     find: function (req, res) {
         var param = req.allParams();
 
