@@ -17,7 +17,7 @@ module.exports = {
         return sails.uuidv4();
       }
     },
-    name: {
+    characterName: {
       type: "string",
       required:true
     },
