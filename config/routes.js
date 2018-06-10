@@ -95,7 +95,7 @@ module.exports.routes = {
   'POST /saveFile': {
     controller: "SavesController", action: "create"
   },
-  'GET /saveByCharacter': {
+  'GET /saveByID': {
     controller: "SavesController", action: "find"
   },
   'Put /saveFile': {
