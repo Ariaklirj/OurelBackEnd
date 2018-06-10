@@ -12,7 +12,7 @@ module.exports = {
             chapter: params.chapter,
             status: params.status,
             user:params.user,
-            characterName:params.characterName
+            name:params.characterName
         };
         if (obj) {
             Save.create(obj).exec(function (err, save) {
