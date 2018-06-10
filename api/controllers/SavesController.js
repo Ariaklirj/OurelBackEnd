@@ -22,7 +22,7 @@ module.exports = {
         var params = req.validate({ 'id_save': 'string' })
 
         if (params) {
-            Save.find({ id_save: params.id_save }).exec(function (err, data) {
+            Save.findOne({ id_save: params.id_save }).exec(function (err, data) {
                 if (!err && data) {
                     res.ok(data);
                 } else {
