@@ -74,7 +74,7 @@ module.exports.routes = {
   'GET /status': {
     controller: "Status", action: "find"
   },
-  'GET /findFirsts': {
+  'GET /findFirstsStatus': {
     controller: "Status", action: "findFirsts"
   },
   'PUT /status': {
