@@ -38,9 +38,9 @@ module.exports = {
 
     },
     update: function(req,res){
-        var params = req.validate([{'chapter':'string'},{'status':'string'}]);
+        var params = req.validate([{'chapter':'string'},{'id_save':'string'},{'status':'string'}]);
         if(params){
-            Save.update({chapter:params.chapter},{status:params.status}).exec(function(err,data){
+            Save.update({id_save:params.id_save},{status:params.status,chapter:params.chapter},).exec(function(err,data){
                 if(!err) {
                     res.ok(data);
                 }

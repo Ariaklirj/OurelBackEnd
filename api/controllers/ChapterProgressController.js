@@ -33,8 +33,8 @@ module.exports = {
                             progrees = progrees.toFixed(2);
                             var responseObj= {
                                 amountUserStatus: statusFromChapterUser,
-                                toalStatus=totalStatusChapter,
-                                totalProgress = progrees
+                                toalStatus:totalStatusChapter,
+                                totalProgress : progrees
                             }
                             res.ok(responseObj);
                     }
