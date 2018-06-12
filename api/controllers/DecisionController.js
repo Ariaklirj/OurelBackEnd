@@ -32,7 +32,8 @@ module.exports = {
                 if(err) {
                     res.negotiate(err);
                 } else {
-                    if(data.length>0) {
+                    console.log(data);
+                    if(data) {
                         res.ok(data);
                     } else {
                         res.notFound("Sin decisiones");
