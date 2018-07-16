@@ -8,7 +8,10 @@
 module.exports = {
     create: function (req, res) {
 
-        var param = req.validate([{'title':'string'},{'isStart':'boolean'},{'isEnd':'boolean'},{'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'},{'lastStatus2?':'string'}]);
+        var param = req.validate([{'title':'string'},{'isStart':'boolean'},{'isEnd':'boolean'},
+        {'admin':'string'},{'chapter':'string'},{'lastStatus?':'string'},
+        {'strUp?':'string'},{'vitUp?':'string'},{'agiUp?':'string'},{'intUp?':'string'},{'lckUp?':'string'},
+        {'lastStatus2?':'string'}]);
       
         if(param) {
             Admin.findOne({id_Admin:param.admin}).exec(function(err,admin){
@@ -30,7 +33,7 @@ module.exports = {
                                     admin:admin.id_Admin,
                                     chapter:chapter.id_chapter
                                 };
-                                Status.create(newEstatus).exec(function(err,status){
+                                Status.create(param).exec(function(err,status){
                                     if(err) {
                                         res.negotiate(err);
                                     } else {

@@ -7,7 +7,8 @@
 
 module.exports = {
     create: function (req, res) {
-        var params = req.validate([{ 'description': 'string' }, { 'urlImage': 'string' }, { 'chapter': 'string' },{ 'status': 'string' }]);
+        var params = req.validate([{ 'description': 'string' }, 
+        { 'urlImage': 'string' }, { 'chapter': 'string' },{ 'status': 'string' }]);
 
         if (params) {
             Sticker.create(params).exec(function (err, data) {

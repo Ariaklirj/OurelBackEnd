@@ -17,7 +17,7 @@ module.exports = {
         return sails.uuidv4();
       }
     },
-
+    //TypeDecision
     limitTime: {
       required: true,
       type: "boolean"
@@ -30,6 +30,8 @@ module.exports = {
       required: true,
       type: "boolean"
     },
+
+    //DecisionOneConfig
     descriptionOne: {
      
       required: true,
@@ -40,6 +42,44 @@ module.exports = {
       type: "String",
       defaultsTo:null
     },
+    hasRestriccionsOne: {
+      required: true,
+      type: "boolean"
+    },
+   
+    idNextStatusOneSucces: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    
+    idNextStatusOneFail: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    strOneNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    vitOneNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    agiOneNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    intOneNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    lckOneNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+
+//  Config Decision 2
     descriptionTwo: {
       defaultsTo:null,
       type: "String"
@@ -49,6 +89,44 @@ module.exports = {
       type: "String",
       defaultsTo:null
     },
+    hasRestriccionsTwo: {
+      required: true,
+      type: "boolean"
+    },
+    
+    idNextStatusTwoSucces: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    
+    idNextStatusTwoFail: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    strTwoNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    vitTwoNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    agiTwoNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    intTwoNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    lckTwoNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+
+    //config 3
     descriptionThree: {
      
       type: "String",
@@ -58,6 +136,44 @@ module.exports = {
       type: "String",
       defaultsTo:null
     },
+    hasRestriccionsThree: {
+      required: true,
+      type: "boolean"
+    },
+   
+    idNextStatusThreeSucces: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+
+    idNextStatusThreeFail: {
+    
+      type: "String",
+      defaultsTo:null
+    },
+    strThreeNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    vitThreeNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    agiThreeNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    intThreeNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+    lckThreeNeeded:{
+      type:"String",
+      defaultsTo:0
+    },
+
+   
     //foreing Key
     status: {
       model: 'Status',

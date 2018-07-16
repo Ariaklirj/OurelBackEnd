@@ -9,7 +9,9 @@ module.exports = {
 
     create: function (req, res) {
         console.log("crear");
-        var param = req.validate([{ "chapter_name": "string" }, { "description": "string" }, { "chapter_status": "boolean" }, { "admin": "string" }, { "previous_chapter": "string" }, { "unique_start": "boolean" }]);
+        var param = req.validate([{ "chapter_name": "string" }, 
+        { "description": "string" }, { "chapter_status": "boolean" }, 
+        { "admin": "string" }, { "previous_chapter": "string" }, { "unique_start": "boolean" }]);
         console.log("parametros ok", param);
 
         if (param) {

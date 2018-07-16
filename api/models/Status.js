@@ -22,7 +22,7 @@ module.exports = {
       type:"String"
      },
     description:{
-        type:"String"
+        type:"Text"
     },
     isStart:{
       type:"boolean",
@@ -42,6 +42,26 @@ module.exports = {
      
       type:"boolean",
       defaultsTo:false
+    },
+    strUp:{
+      type:"string",
+      defaultsTo:0
+    },
+    vitUp:{
+      type:"string",
+      defaultsTo:0
+    },
+    agiUp:{
+      type:"string",
+      defaultsTo:0
+    },
+    intUp:{
+      type:"string",
+      defaultsTo:0
+    },
+    lckUp:{
+      type:"string",
+      defaultsTo:0
     },
 
      //foreing Key
