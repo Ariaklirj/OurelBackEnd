@@ -30,7 +30,27 @@ module.exports = {
        model:'Save',
        required:true,
        notNull:true
-     }
+     },
+     str:{
+      type:"string",
+      defaultsTo:0
+    },
+    vit:{
+      type:"string",
+      defaultsTo:0
+    },
+    agi:{
+      type:"string",
+      defaultsTo:0
+    },
+    int:{
+      type:"string",
+      defaultsTo:0
+    },
+    lck:{
+      type:"string",
+      defaultsTo:0
+    }
 
 
   }

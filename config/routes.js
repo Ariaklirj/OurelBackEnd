@@ -96,29 +96,41 @@ module.exports.routes = {
     controller: "Decision", action: "updateAll"
   },
   'POST /saveFile': {
-    controller: "SavesController", action: "create"
+    controller: "Saves", action: "create"
   },
   'GET /saveByID': {
-    controller: "SavesController", action: "find"
+    controller: "Saves", action: "find"
   },
   'Put /saveFile': {
-    controller: "SavesController", action: "update"
+    controller: "Saves", action: "update"
   },
   'POST /users/:id/deposit': {
     controller: "Deposits", action: "create"
   },
   'POST /ChapterProges': {
-    controller: "ChapterProgressController", action: "create"
+    controller: "ChapterProgress", action: "create"
   },
   'GET /getAllChapterProges': {
-    controller: "ChapterProgressController", action: "findAllByChapter"
+    controller: "ChapterProgress", action: "findAllByChapter"
   },
   'POST /UsersChapter': {
-    controller: "UserChapterOwnedController", action: "create"
+    controller: "UserChapterOwned", action: "create"
   },
   'GET /getAllChaptersUser': {
-    controller: "UserChapterOwnedController", action: "findAllByUser"
-  }
+    controller: "UserChapterOwned", action: "findAllByUser"
+  },
+  'POST /character': {
+    controller: "Character", action: "create"
+  },
+  'GET /characterList': {
+    controller: "Character", action: "find"
+  },
+  'GET /character': {
+    controller: "Character", action: "findOne"
+  },
+  'Put /character': {
+    controller: "Character", action: "update"
+  },
 
 
   /***************************************************************************
